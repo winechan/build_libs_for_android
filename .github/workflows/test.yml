@@ -1,4 +1,4 @@
-name: Build libpng for Android (arm64-v8a)
+name: Build test
 
 on:
   push:
