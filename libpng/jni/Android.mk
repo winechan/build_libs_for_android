@@ -1,4 +1,8 @@
 LOCAL_PATH := $(call my-dir)
+
+# 指定输出目录
+OUT_PATH := $(LOCAL_PATH)/../libs
+
 include $(CLEAR_VARS)
 
 LOCAL_CFLAGS :=
