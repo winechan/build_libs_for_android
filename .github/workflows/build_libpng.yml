@@ -26,5 +26,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ./libpng/lib/**/*
+          path: ./libpng/lib/*
           name: build
