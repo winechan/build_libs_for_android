@@ -19,7 +19,7 @@ jobs:
           sudo apt install unzip -y
           unzip -q NDK
           ANDROID_NDK_HOME=$(pwd)/android-ndk-r15c
-          ANDROID_NDK=$(pwd)/android-ndk-r15c
+          echo "export ANDROID_NDK_HOME=$ANDROID_NDK_HOME" >> $GITHUB_ENV
       - name: Build libwebp for Android
         run: |
           cd libwebp
