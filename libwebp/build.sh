@@ -1,35 +1,16 @@
-#!/bin/bash
+if [ -n "$ANDROID_NDK" ]; then
+    export NDK=${ANDROID_NDK}
+elif [ -n "$ANDROID_NDK_HOME" ]; then
+    export NDK=${ANDROID_NDK_HOME}
+elif [ -n "$ANDROID_NDK_HOME" ]; then
+    export NDK=${ANDROID_NDK_HOME}
+else
+    export NDK=~/android-ndk-r10e
+fi
 
-ANDROID_NDK_ROOT=~/tools/android-ndk-r0d/
-echo $ANDOID_NDK_ROOT
+if [ ! -d "$NDK" ]; then
+    echo "Please set ANDROID_NDK environment to the root of NDK."
+    exit 1
+fi
+"$NDK"/ndk-build NDK_PROJECT_PATH=./ $@
 
-ANDROID_SDK="10 13 14 18 19 21"
-for opt
-do
-  case $opt in
-    ANDROID_SDK=*)
-    ANDROID_SDK=${opt#ANDROID_SDK=}
-    ;;
-  esac
-done
-
-for i in $ANDROID_SDK
-do
-  echo "Compiling for API LEVEL($i)..............."
-  ndk-build NDK_PROJECT_PATH=./out/$i \
-            APP_BUILD_SCRIPT=./Android.mk \
-            APP_PLATFORM=android-$i \
-            ANDROID_SDK=$i \
-            APP_ABI=armeabi-v7a \
-            NDK_LOG=1 \
-            NDK_ROOT_PATH=$ANDROID_NDK_ROOT \
-            NDK_TOOLCHAIN_VERSION=4.9 \
-            APP_STL=gnustl_static \
-            -j8
-
-#CXX_APP_STL=stlport_static \
-#CXX_APP_STL=gnustl_static \
-#APP_STL=stlport_shared\
-#NDK_LOG=1 \
-#V=1
-done
