@@ -1,4 +1,13 @@
 LOCAL_PATH := $(call my-dir)
+
+# 指定输出目录
+OUT_PATH := $(LOCAL_PATH)/../libs
+# 打印信息到控制台
+$(info ******************************)
+$(info *** Android.mk Build Started ***)
+$(info *** Android.mk OUT_PATH: $(OUT_PATH) ***)
+$(info ******************************)
+
 include $(CLEAR_VARS)
 
 LOCAL_CFLAGS :=

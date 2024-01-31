@@ -22,9 +22,9 @@ jobs:
       - name: Build libpng for Android
         run: |
           cd libpng
-          ./build_android.sh
-      - name: Upload53
+          ./build_test.sh
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ./libpng/build/*
+          path: ./libpng/obj/**/*
           name: build
